@@ -43,3 +43,9 @@ type UpdateRequest struct {
 type UpdateResponse struct {
 	Post PostType `json:"post"`
 }
+
+type Error struct {
+	Code    int64  `json:"code"`
+	Message string `json:"message"`
+	Reason  string `json:"reason"`
+}

@@ -30,6 +30,15 @@ type HandlerV1Config struct {
 	Redis      redis.Conn
 }
 
+func New(c *HandlerV1Config) *handlerV1 {
+	return &handlerV1{
+		log:        c.Logger,
+		grpcClient: c.GrpcClient,
+		cfg:        c.Cfg,
+		redis:      c.Redis,
+	}
+}
+
 func ProtoToStruct(s interface{}, p proto.Message) error {
 	var jm jsonpb.Marshaler
 
