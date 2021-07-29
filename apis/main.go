@@ -3,23 +3,21 @@ package api
 import (
 	"net/http"
 
+	"github.com/OnlyAloner/api_gateway/config"
+	client "github.com/OnlyAloner/api_gateway/pkg/grpc_client"
 	"github.com/OnlyAloner/api_gateway/pkg/logger"
-
-	"github.com/OnlyAloner/api_gateway.git/config"
-
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 )
 
 type Config struct {
 	Logger     logger.Logger
-	GrpcClient *client.grpcservices
+	GrpcClient *client.Grpcservices
 	Cfg        config.Config
 }
 
 func New(cnf Config) *gin.Engine {
 	r := gin.New()
-	r.Static("/images", "./static/images")
 	r.Use(gin.Logger())
 	r.Use(gin.Recovery())
 	config := cors.DefaultConfig()
@@ -34,5 +32,5 @@ func New(cnf Config) *gin.Engine {
 		c.JSON(http.StatusOK, gin.H{"message": "api OK"})
 	})
 	r.Run(":8080")
-
+	return r
 }

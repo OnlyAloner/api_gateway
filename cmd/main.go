@@ -5,10 +5,10 @@ import (
 
 	api "github.com/OnlyAloner/api_gateway/apis"
 
-	"github.com/OnlyAloner/api_gateway/pkg/grpc_client/client"
+	client "github.com/OnlyAloner/api_gateway/pkg/grpc_client"
 	"github.com/OnlyAloner/api_gateway/pkg/logger"
 
-	"github.com/OnlyAloner/api_gateway.git/config"
+	"github.com/OnlyAloner/api_gateway/config"
 
 	_ "github.com/lib/pq"
 )
@@ -16,7 +16,7 @@ import (
 var (
 	log        logger.Logger
 	cfg        config.Config
-	grpcClient *client.grpcservices
+	grpcClient *client.Grpcservices
 	err        error
 )
 

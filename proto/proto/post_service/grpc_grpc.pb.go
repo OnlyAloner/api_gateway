@@ -205,5 +205,5 @@ var PostService_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "proto/grpc.proto",
+	Metadata: "grpc.proto",
 }
