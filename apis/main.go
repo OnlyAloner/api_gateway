@@ -33,7 +33,9 @@ func New(cnf Config) *gin.Engine {
 	r.GET("/test", func(c *gin.Context) {
 		c.JSON(http.StatusOK, gin.H{"message": "api OK"})
 	})
-	url := ginSwagger.URL("swagger/doc.json") // The url pointing to API definition
+	//r.POST("handlers/post_service/create", handlers.Create)
+
+	url := ginSwagger.URL("swagger/doc.json")
 	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler, url))
 
 	return r
