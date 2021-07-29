@@ -1,12 +1,14 @@
 package main
 
 import (
-	api "crudprojforapi/api_gateway/apis"
-	"crudprojforapi/api_gateway/pkg/logger"
 	"sync"
 
-	config "crudprojforapi/api_gateway"
-	"crudprojforapi/api_gateway/pkg/grpc_client/client"
+	api "github.com/OnlyAloner/api_gateway/apis"
+
+	"github.com/OnlyAloner/api_gateway/pkg/grpc_client/client"
+	"github.com/OnlyAloner/api_gateway/pkg/logger"
+
+	"github.com/OnlyAloner/api_gateway.git/config"
 
 	_ "github.com/lib/pq"
 )
@@ -14,7 +16,7 @@ import (
 var (
 	log        logger.Logger
 	cfg        config.Config
-	grpcClient *client.GrpcStaff
+	grpcClient *client.grpcservices
 	err        error
 )
 

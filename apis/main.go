@@ -1,9 +1,11 @@
 package api
 
 import (
-	"crudprojforapi/api_gateway/config"
-	"crudprojforapi/api_gateway/pkg/logger"
 	"net/http"
+
+	"github.com/OnlyAloner/api_gateway/pkg/logger"
+
+	"github.com/OnlyAloner/api_gateway.git/config"
 
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
