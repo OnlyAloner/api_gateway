@@ -8,6 +8,8 @@ import (
 	"github.com/OnlyAloner/api_gateway/pkg/logger"
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
+	ginSwagger "github.com/swaggo/gin-swagger"
+	"github.com/swaggo/gin-swagger/swaggerFiles"
 )
 
 type Config struct {
@@ -31,6 +33,8 @@ func New(cnf Config) *gin.Engine {
 	r.GET("/test", func(c *gin.Context) {
 		c.JSON(http.StatusOK, gin.H{"message": "api OK"})
 	})
-	r.Run(":8080")
+	url := ginSwagger.URL("swagger/doc.json") // The url pointing to API definition
+	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler, url))
+
 	return r
 }
