@@ -1,0 +1,55 @@
+syntax = "proto3";
+
+option go_package="proto/post_service";
+
+service PostService{
+    rpc Create(CreateRequest) returns (CreateResponse) {}
+    rpc Get(GetRequest) returns (GetResponse) {}
+    rpc GetAll(GetAllRequest) returns (GetAllResponse) {}
+    rpc Update(UpdateRequest) returns (UpdateResponse) {}
+}
+
+message Post{
+    int32 id = 1;
+    string title = 2;
+    string body = 3;
+    string created_at = 4;
+    string author = 5;
+}
+
+message Postes{
+    repeated Post postes = 1;
+}
+
+message CreateRequest{
+    Postes postes = 1;
+}
+
+message CreateResponse{
+    Postes postes = 1;
+}
+
+message GetRequest{
+    int32 id = 1;
+}
+
+message GetResponse{
+    Post post = 1;
+}
+
+message GetAllRequest {
+    
+}
+
+message GetAllResponse {
+    repeated Post post = 1;
+}
+
+message UpdateRequest{
+    int32 id = 1;
+    Post post = 2;
+}
+
+message UpdateResponse{
+    Post post = 1;
+}
