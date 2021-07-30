@@ -1,0 +1,110 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "contact": {}
+    },
+    "paths": {
+        "/handlers/post_service/create": {
+            "post": {
+                "description": "Create",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "post_service"
+                ],
+                "summary": "create",
+                "parameters": [
+                    {
+                        "description": "post_service",
+                        "name": "post_service",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.CreateRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.CreateResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "models.CreateRequest": {
+            "type": "object",
+            "properties": {
+                "postes": {
+                    "$ref": "#/definitions/models.PostesType"
+                }
+            }
+        },
+        "models.CreateResponse": {
+            "type": "object",
+            "properties": {
+                "postes": {
+                    "$ref": "#/definitions/models.PostesType"
+                }
+            }
+        },
+        "models.PostType": {
+            "type": "object",
+            "properties": {
+                "author": {
+                    "type": "string"
+                },
+                "body": {
+                    "type": "string"
+                },
+                "created_at": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "title": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.PostesType": {
+            "type": "object",
+            "properties": {
+                "postes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.PostType"
+                    }
+                }
+            }
+        }
+    },
+    "securityDefinitions": {
+        "ApiKeyAuth": {
+            "type": "apiKey",
+            "name": "Authorization",
+            "in": "header"
+        }
+    }
+}

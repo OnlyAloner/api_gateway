@@ -22,11 +22,11 @@ message PostesType{
 }
 
 message CreateRequest{
-    PostesType postes = 1;
+    PostType postes = 1;
 }
 
 message CreateResponse{
-    PostesType postes = 1;
+    PostType postes = 1;
 }
 
 message GetRequest{

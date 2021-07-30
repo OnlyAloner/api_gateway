@@ -17,7 +17,7 @@ func Load() Config {
 	c := Config{}
 
 	c.LogLevel = cast.ToString(getOrReturnDefault("LOG_LEVEL", "debug"))
-	c.HttpPort = cast.ToString(getOrReturnDefault("HTTP_PORT", ":9001"))
+	c.HttpPort = cast.ToString(getOrReturnDefault("HTTP_PORT", ":9002"))
 	c.PostServiceNewHost = cast.ToString(getOrReturnDefault("POST_SERVICE_NEW_HOST", "localhost"))
 
 	c.PostServiceNewPort = cast.ToInt(getOrReturnDefault("POST_SERVICE_NEW_PORT", 9101))

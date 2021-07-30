@@ -1,0 +1,70 @@
+definitions:
+  models.CreateRequest:
+    properties:
+      postes:
+        $ref: '#/definitions/models.PostesType'
+    type: object
+  models.CreateResponse:
+    properties:
+      postes:
+        $ref: '#/definitions/models.PostesType'
+    type: object
+  models.PostType:
+    properties:
+      author:
+        type: string
+      body:
+        type: string
+      created_at:
+        type: string
+      id:
+        type: integer
+      title:
+        type: string
+    type: object
+  models.PostesType:
+    properties:
+      postes:
+        items:
+          $ref: '#/definitions/models.PostType'
+        type: array
+    type: object
+info:
+  contact: {}
+paths:
+  /handlers/post_service/create:
+    post:
+      consumes:
+      - application/json
+      description: Create
+      parameters:
+      - description: post_service
+        in: body
+        name: post_service
+        required: true
+        schema:
+          $ref: '#/definitions/models.CreateRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.CreateResponse'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: create
+      tags:
+      - post_service
+securityDefinitions:
+  ApiKeyAuth:
+    in: header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"
